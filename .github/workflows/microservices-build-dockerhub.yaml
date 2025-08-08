@@ -24,13 +24,13 @@ jobs:
         with:
           filters: |
             catalogue:
-              - 'microservices-on-k8s/catalogue/**'
+              - 'catalogue/**'
             frontend:
-              - 'microservices-on-k8s/frontend/**'
+              - '/frontend/**'
             recommendation:
-              - 'microservices-on-k8s/recommendation/**'
+              - '/recommendation/**'
             voting:
-              - 'microservices-on-k8s/voting/**'
+              - '/voting/**'
 
   build-catalogue:
     needs: changes
@@ -47,7 +47,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./microservices-on-k8s/catalogue
+          context: ./catalogue
           push: true
           tags: ${{ env.DOCKERHUB_REPO }}:catalogue-latest,${{ env.DOCKERHUB_REPO }}:catalogue-${{ github.sha }}
 
@@ -66,7 +66,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./microservices-on-k8s/frontend
+          context: ./frontend
           push: true
           tags: ${{ env.DOCKERHUB_REPO }}:frontend-latest,${{ env.DOCKERHUB_REPO }}:frontend-${{ github.sha }}
 
@@ -85,7 +85,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./microservices-on-k8s/recommendation
+          context: ./recommendation
           push: true
           tags: ${{ env.DOCKERHUB_REPO }}:recommendation-latest,${{ env.DOCKERHUB_REPO }}:recommendation-${{ github.sha }}
 
@@ -104,7 +104,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: ./microservices-on-k8s/voting
+          context: ./voting
           push: true
           tags: ${{ env.DOCKERHUB_REPO }}:voting-latest,${{ env.DOCKERHUB_REPO }}:voting-${{ github.sha }}
 
