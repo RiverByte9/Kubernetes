@@ -26,11 +26,11 @@ jobs:
             catalogue:
               - 'catalogue/**'
             frontend:
-              - '/frontend/**'
+              - 'frontend/**'
             recommendation:
-              - '/recommendation/**'
+              - 'recommendation/**'
             voting:
-              - '/voting/**'
+              - 'voting/**'
 
   build-catalogue:
     needs: changes
